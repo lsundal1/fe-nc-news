@@ -1,20 +1,23 @@
-
+import { Link } from "react-router-dom"
 
 export default function ArticleCard (props) {
 
-    const { title, article_img_url, author, topic, votes, created_at } = props
+    const { item } = props
 
+    const url = `/articles/${item.article_id}`
+    
     return (
         <div id="article-card">
-            <img width="300px"src={article_img_url} alt="article-card-img"></img>
+            <img width="300px"src={item.article_img_url} alt="article-card-img"></img>
             <div id="article-card-info">
-                <h3>{title}</h3>
+                <h3>{item.title}</h3>
                 <ul>
-                    <li>Author: {author}</li>
-                    <li>Topic: {topic}</li>
-                    <li>Votes: {votes}</li>
-                    <li>Date Published: {created_at.split('T')[0]}</li>
+                    <li>Author: {item.author}</li>
+                    <li>Topic: {item.topic}</li>
+                    <li>Votes: {item.votes}</li>
+                    <li>Date Published: {item.created_at.split('T')[0]}</li>
                 </ul>
+                <Link to={url}>Go to article</Link>
             </div>
         </div>
     )
