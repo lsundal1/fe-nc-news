@@ -8,3 +8,7 @@ const apiClient = axios.create({
 export function fetchArticles () {
     return apiClient.get(`/articles`)
 }
+
+export function fetchArticleById (article_id) {
+    return apiClient.get(`/articles/${article_id}`)
+}

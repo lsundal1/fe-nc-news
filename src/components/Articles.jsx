@@ -1,15 +1,17 @@
-import { useEffect } from "react"
+import { useEffect, useContext } from "react"
 import { fetchArticles } from "../../axios.js"
 import ArticleCard from "./ArticleCard.jsx"
+import { ArticleContext } from "../contexts/ArticleContext.jsx"
 
 export default function Articles (props) {
 
     const {articles, setArticles} = props
+    const { article, setArticle } = useContext(ArticleContext)
+    console.log(article)
 
     useEffect(() => {
         fetchArticles().then(({data}) => {
             setArticles(data.articles)
-            console.log(articles)
         })
         .catch((err) => {
             console.log(err)
@@ -19,9 +21,9 @@ export default function Articles (props) {
 
     return (
         <div id="articles-list">
-            <ul >
-            {articles.map((article) => {
-                return <ArticleCard title={article.title} article_img_url={article.article_img_url} author={article.author} topic={article.topic} votes={article.votes} created_at={article.created_at}></ArticleCard>
+            <ul>
+            {articles.map((item) => {
+                return <ArticleCard key={item.article_id} item={item} setArticle={setArticle}></ArticleCard>
             })}
             </ul>
         </div>
