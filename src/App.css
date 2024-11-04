@@ -1,8 +1,21 @@
+* {
+  border: solid 1px black
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+#article-card {
+  display: inline-flex;
+  background-color: aliceblue;
+  margin: 0 auto;
+}
+
+#article-card-info {
+  width: 400px;
 }
 
 
