@@ -1,6 +1,10 @@
 * {
   border: solid 1px black
 }
+
+body {
+  margin: 0 auto;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -18,4 +22,14 @@
   width: 400px;
 }
 
+#single-article {
+  display: inline-flex;
+}
 
+#single-article-img {
+  max-width: 500px;
+}
+
+#comments {
+  text-align: left;
+}

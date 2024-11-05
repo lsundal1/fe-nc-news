@@ -1,10 +1,10 @@
 
 import { Routes, Route } from "react-router-dom"
 import { useState } from "react"
+import '../App.css'
 import Header from './Header'
 import Home from './Home'
 import Articles from './Articles'
-import '../App.css'
 import SingleArticle from "./SingleArticle"
 
 function App() {

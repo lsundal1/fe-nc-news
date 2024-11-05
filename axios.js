@@ -12,3 +12,7 @@ export function fetchArticles () {
 export function fetchArticleById (article_id) {
     return apiClient.get(`/articles/${article_id}`)
 }
+
+export function fetchCommentsById (article_id) {
+    return apiClient.get(`/articles/${article_id}/comments`)
+}

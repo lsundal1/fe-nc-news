@@ -2,6 +2,7 @@ import { useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import { ArticleContext } from '../contexts/ArticleContext';
 import { fetchArticleById } from '../../axios';
+import Comments from './Comments'
 
 export default function SingleArticle() {
     
@@ -17,16 +18,19 @@ export default function SingleArticle() {
     });
     }, [article_id]);
 
-    const date = article.created_at.split('T')[0]
-
     return (
         <div>
             <h1>{article.title}</h1>
-            <img src={article.article_img_url}></img>
-            <p>Topic: {article.topic}<br/> 
-                Author: {article.author}<br/> 
-                Date Published: {date}</p>
-            <p>{article.body}</p>
+            <div id="single-article">
+                <img id="single-article-img" src={article.article_img_url}></img>
+            <div>
+                <p>{article.body}</p>
+                <p>Topic: {article.topic}<br/> 
+                    Author: {article.author}<br/> 
+                    Date Published: {article.created_at}</p>
+            </div>
+            </div>
+            <Comments></Comments>
         </div>
         
     )
