@@ -6,6 +6,7 @@ import Header from './Header'
 import Home from './Home'
 import Articles from './Articles'
 import SingleArticle from "./SingleArticle"
+import SingleTopic from "./SingleTopic"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/articles" element={<Articles articles={articles} setArticles={setArticles}/>}/>
         <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
+        <Route path="/topics/:topic_slug" element={<SingleTopic articles={articles} setArticles={setArticles}/>}></Route>
       </Routes>  
     </div>
   )

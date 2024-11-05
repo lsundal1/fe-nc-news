@@ -8,7 +8,6 @@ export default function Votes ({article_id, votes, setVotes}) {
     function handleMinus () {
         setVotes((currVotes) => currVotes -1);
         updateVotes(article_id, {inc_votes: -1}).then(() => {
-            console.log(-1)
         })
         .catch((err) => {
             setLikesCount((currentLikesCount) => currentLikesCount + 1);
@@ -19,7 +18,6 @@ export default function Votes ({article_id, votes, setVotes}) {
     const handlePlus = () => {
         setVotes((currVotes) => currVotes +1);
         updateVotes(article_id, {inc_votes: 1}).then(() => {
-            console.log(+1)
         })
         .catch((err) => {
             setLikesCount((currentLikesCount) => currentLikesCount - 1);

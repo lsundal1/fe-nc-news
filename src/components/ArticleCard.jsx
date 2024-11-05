@@ -8,8 +8,7 @@ export default function ArticleCard (props) {
     
     return (
         <div id="article-card">
-            <img id="article-card-img" src={item.article_img_url} alt="article-card-img"></img>
-            
+            <img id="article-card-img" src={item.article_img_url} alt="article-card-img"></img> 
             <Link to={url}><h3>{item.title}</h3></Link>
             <ul>
                 <li>Author: {item.author}</li>
