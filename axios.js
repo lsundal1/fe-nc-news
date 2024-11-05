@@ -20,3 +20,7 @@ export function fetchCommentsById (article_id) {
 export function updateVotes (article_id, obj) {
     return apiClient.patch(`/articles/${article_id}`, obj)
 }
+
+export function postComment (article_id, obj) {
+    return apiClient.post(`/articles/${article_id}/comments`, obj)
+}

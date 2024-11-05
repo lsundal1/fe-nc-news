@@ -37,3 +37,7 @@ body {
 #likes {
   display: inline-flex;
 }
+
+#comment-form {
+  display: inline-flex;
+}

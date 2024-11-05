@@ -17,7 +17,6 @@ export default function ArticleCard (props) {
                     <li>Votes: {item.votes}</li>
                     <li>Date Published: {item.created_at.split('T')[0]}</li>
                 </ul>
-                {/* <Link to={url}>Go to article</Link> */}
             </div>
         </div>
     )
