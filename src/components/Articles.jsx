@@ -32,8 +32,8 @@ export default function Articles (props) {
 
 
     return (
-        <div id="articles-list">
-            <ul>
+        <div id="articles-list-container">
+            <ul id="articles-list">
             {articles.map((item) => {
                 return <ArticleCard key={item.article_id} item={item} setArticle={setArticle}></ArticleCard>
             })}

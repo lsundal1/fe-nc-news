@@ -28,8 +28,8 @@ export default function Votes ({article_id, votes, setVotes}) {
     } 
 
     return (
-        <div id="likes">
-            <button onClick={handleMinus}>-</button><h3>Likes: {votes}</h3><button onClick={handlePlus}>+</button>
+        <div className="likes">
+            <button onClick={handleMinus}>-</button><h4>Likes: {votes}</h4><button onClick={handlePlus}>+</button>
             {error ? <p>{error}</p> : null}
         </div>
     )

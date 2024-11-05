@@ -5,21 +5,31 @@
 body {
   margin: 0 auto;
 }
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
+#articles-list {
+  margin: 0px
+}
+
+#articles-list-container {
+  margin: 0px
+}
+
 #article-card {
-  display: inline-flex;
+  display: block;
+  width: 90%;
   background-color: aliceblue;
   margin: 0 auto;
 }
 
-#article-card-info {
-  width: 400px;
+#article-card-img {
+  max-width: 70%;
 }
 
 #single-article {
@@ -39,5 +49,9 @@ body {
 }
 
 #comment-form {
+  display: inline-flex;
+}
+
+.likes {
   display: inline-flex;
 }

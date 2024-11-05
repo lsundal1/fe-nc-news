@@ -1,7 +1,7 @@
 import { postComment } from "../../axios"
 import { useState } from "react"
 
-export default function PostComment ({article_id}) {
+export default function PostComment ({article_id, setAuthor}) {
 
     const [comment, setComment] = useState({})
     const [isPosted, setIsPosted] = useState(false)
@@ -10,7 +10,7 @@ export default function PostComment ({article_id}) {
         e.preventDefault()
 
         const obj = {
-            username: "tickle122",
+            username: "grumpy19",
             body: e.target.value
         }
         console.log(obj)
@@ -21,6 +21,7 @@ export default function PostComment ({article_id}) {
         e.preventDefault()
 
         setIsPosted(true)
+        setAuthor("grumpy19")
         postComment(article_id, comment)
             .then(({data})=> {
                 console.log(data)

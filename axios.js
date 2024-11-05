@@ -24,3 +24,7 @@ export function updateVotes (article_id, obj) {
 export function postComment (article_id, obj) {
     return apiClient.post(`/articles/${article_id}/comments`, obj)
 }
+
+export function deleteComment (comment_id) {
+    return apiClient.delete(`/comments/${comment_id}`)
+}
