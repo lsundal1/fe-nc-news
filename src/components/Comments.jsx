@@ -1,9 +1,8 @@
 import { fetchCommentsById } from "../../axios";
 import { useState, useEffect } from "react";
+import PostComment from './PostComment.jsx'
 
-export default function Comments (props) {
-
-    const { article_id } = props 
+export default function Comments ({article_id}) {
 
     const [comments, setComments] = useState([])
 
@@ -15,12 +14,12 @@ export default function Comments (props) {
             console.log(err)
         })
 
-    },[])
-
+    },[comments])
 
     return (
         <div id="comments">
             <h3>Comments:</h3>
+            <PostComment article_id={article_id}></PostComment>
             <ul>
                 {comments.map((comment) => {
                     return <li key={comment.comment_id}>{comment.author}: {comment.body}</li>
