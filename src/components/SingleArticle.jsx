@@ -1,22 +1,26 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { ArticleContext } from '../contexts/ArticleContext';
 import { fetchArticleById } from '../../axios';
 import Comments from './Comments'
+import Votes from './Votes';
 
 export default function SingleArticle() {
     
-    const { article, setArticle } = useContext(ArticleContext)
+    const [article, setArticle] = useState({})
+    const [votes, setVotes] = useState(0)
     const { article_id } = useParams()
-
-    console.log(article)
     
     useEffect(() => {
         fetchArticleById(article_id)
-        .then(({data}) => {     
-        setArticle(data.article);
-    });
+            .then(({data}) => {     
+                setArticle(data.article);
+                setVotes(data.article.votes)
+            }).catch((err) => {
+                console.log(err)
+            })
+        
     }, [article_id]);
+    
 
     return (
         <div>
@@ -27,10 +31,12 @@ export default function SingleArticle() {
                 <p>{article.body}</p>
                 <p>Topic: {article.topic}<br/> 
                     Author: {article.author}<br/> 
-                    Date Published: {article.created_at}</p>
+                    Date Published: {article.created_at}
+                </p>
+                <Votes article_id={article_id} votes={votes} setVotes={setVotes}></Votes>
             </div>
             </div>
-            <Comments></Comments>
+            <Comments article_id={article_id}></Comments>
         </div>
         
     )

@@ -1,18 +1,22 @@
 import { fetchCommentsById } from "../../axios";
-import { useState, useContext } from "react";
-import { ArticleContext } from "../contexts/ArticleContext";
+import { useState, useEffect } from "react";
 
-export default function Comments () {
+export default function Comments (props) {
 
-    const { article } = useContext(ArticleContext)
+    const { article_id } = props 
 
     const [comments, setComments] = useState([])
 
-    fetchCommentsById(article.article_id).then(({data}) => {
-        setComments(data.comments)
-    }).catch((err) => {
-        console.log(err)
-    })
+    useEffect(() => {
+
+        fetchCommentsById(article_id).then(({data}) => {
+            setComments(data.comments)
+        }).catch((err) => {
+            console.log(err)
+        })
+
+    },[])
+
 
     return (
         <div id="comments">
