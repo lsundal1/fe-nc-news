@@ -16,3 +16,7 @@ export function fetchArticleById (article_id) {
 export function fetchCommentsById (article_id) {
     return apiClient.get(`/articles/${article_id}/comments`)
 }
+
+export function updateVotes (article_id, obj) {
+    return apiClient.patch(`/articles/${article_id}`, obj)
+}

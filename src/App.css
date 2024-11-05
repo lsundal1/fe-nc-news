@@ -33,3 +33,7 @@ body {
 #comments {
   text-align: left;
 }
+
+#likes {
+  display: inline-flex;
+}
