@@ -28,3 +28,11 @@ export function postComment (article_id, obj) {
 export function deleteComment (comment_id) {
     return apiClient.delete(`/comments/${comment_id}`)
 }
+
+export function fetchTopics () {
+    return apiClient.get(`/topics`)
+}
+
+export function fetchArticlesByTopic (topic) {
+    return apiClient.get(`/articles?topic=${topic}`)
+}

@@ -13,18 +13,16 @@ export default function PostComment ({article_id, setAuthor}) {
             username: "grumpy19",
             body: e.target.value
         }
-        console.log(obj)
         setComment(obj)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        setIsLoading(false)
         setIsPosted(true)
         setAuthor("grumpy19")
         postComment(article_id, comment)
             .then(({data})=> {
-                console.log(data)
             })
             .catch((err) => {
                 console.log(err)
@@ -39,7 +37,7 @@ export default function PostComment ({article_id, setAuthor}) {
         <div>
             <form id="comment-form" onSubmit={handleSubmit}>
 
-                <label htmlFor="category_name">Have your say: </label><br/>
+                <label htmlFor="comment">Have your say: </label><br/>
                 <input type='text' onChange={handleInput} id="comment" placeholder="Write a comment..."></input><br/> 
 
                 <input disabled={isPosted} className="submit" type="submit" value="Submit"/>
