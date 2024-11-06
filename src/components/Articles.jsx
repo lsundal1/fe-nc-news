@@ -31,9 +31,6 @@ export default function Articles ({ articles, setArticles, topic_slug }) {
             })
     },[topic_slug])
 
-    console.log(topic_slug)
-
-
     if(isErr) {
         return <h3>Oh no! an error... 😬</h3>
     }

@@ -1,15 +1,18 @@
 import { fetchTopics } from "../../axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function SearchByTopic ({topic_slug}) {
 
     const [topics, setTopics] = useState([])
-    const [url, setUrl] = useState("")
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetchTopics().then(({data})=> {
-            setTopics(data.topics)
+            const topicsArray = data.topics.map((topic) => {
+                return topic.slug
+            })
+            setTopics(topicsArray)
         })
         .catch((err) => {
             console.log(err)
@@ -18,21 +21,18 @@ export default function SearchByTopic ({topic_slug}) {
 
     const handleChange = (e) => {
         e.preventDefault()
-        setUrl(`/topics/${e.target.value}`)
-        console.log(url)
+        navigate(`/topics/${e.target.value}`)
     }
 
     return (
         <div>
             <label htmlFor="topics">Search by topic: </label>
-            <Link to={url}>
-                <select name="topics" value={topic_slug} onChange={handleChange}>
-                    <option key="All">All</option>
-                    {topics.map((topic) => {
-                        return <option key={topic.slug} value={topic.slug}>{topic.slug}</option>
-                    })}
-                </select>
-            </Link>
-        </div>
+            <select name="topics" value={topic_slug} onChange={handleChange}>
+                <option key="all">All</option>
+                {topics.map((topic) => {
+                    return <option key={topic} value={topic}>{topic}</option>
+                })} 
+            </select>
+        </div>  
     )
 }   
