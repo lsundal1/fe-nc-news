@@ -12,6 +12,7 @@ export default function Header () {
             <nav id="nav">
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/articles">Articles</Link>
+                <Link className="nav-link" to="/topics">Topics</Link>
                 <Link className="nav-link" to="/" onClick={SignOut}>Log out</Link>
             </nav>
         </div>

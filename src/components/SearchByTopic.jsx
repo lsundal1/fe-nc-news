@@ -2,7 +2,8 @@ import { fetchTopics } from "../../axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function SearchByTopic ({topic_slug}) {
+
+export default function SearchByTopic () {
 
     const [topics, setTopics] = useState([])
     const navigate = useNavigate()
@@ -17,6 +18,7 @@ export default function SearchByTopic ({topic_slug}) {
         .catch((err) => {
             console.log(err)
         })
+
     },[])
 
     const handleChange = (e) => {
@@ -27,8 +29,8 @@ export default function SearchByTopic ({topic_slug}) {
     return (
         <div>
             <label htmlFor="topics">Search by topic: </label>
-            <select name="topics" value={topic_slug} onChange={handleChange}>
-                <option key="all">All</option>
+            <select onChange={handleChange}>
+                <option key="All">All</option>
                 {topics.map((topic) => {
                     return <option key={topic} value={topic}>{topic}</option>
                 })} 
