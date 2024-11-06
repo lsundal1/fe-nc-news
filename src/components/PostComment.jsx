@@ -1,10 +1,12 @@
 import { postComment } from "../../axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function PostComment ({article_id, setAuthor}) {
 
     const [comment, setComment] = useState({})
     const [isPosted, setIsPosted] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isErr, setIsErr] = useState(false)
 
     const handleInput = (e) => {
         e.preventDefault()
@@ -18,19 +20,30 @@ export default function PostComment ({article_id, setAuthor}) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setIsLoading(false)
+        setIsLoading(true)
         setIsPosted(true)
         setAuthor("grumpy19")
         postComment(article_id, comment)
             .then(({data})=> {
+                setIsLoading(false)
             })
             .catch((err) => {
+                setIsLoading(false)
+                setIsErr(true)
                 console.log(err)
             })
 
         setTimeout(() => {
             setIsPosted(false)
         }, 3000)
+    }
+
+    if (isLoading) {
+        return <p>Posting comment...</p>
+    }
+
+    if (isErr) {
+        return <p>Sorry... couldn't post comment 😬</p>
     }
 
     return (

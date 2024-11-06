@@ -3,14 +3,18 @@ import { deleteComment } from "../../axios";
 
 export default function DeleteComment ({comment_id}) {
 
-    const [deleted, setDeleted] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isErr, setIsErr] = useState(false)
+
 
     function handleDelete () {
-
-        setDeleted(true)
+        setIsLoading(true)
         deleteComment(comment_id).then(() => {
+            setIsLoading(false)
         })
         .catch((err) => {
+            setIsLoading(false)
+            setIsErr(true)
             console.log(err)
         })
 
@@ -19,7 +23,10 @@ export default function DeleteComment ({comment_id}) {
         }, 3000)
     }
 
-    return (
-        <button id="delete" disabled={deleted} onClick={handleDelete}>Delete</button>
-    )
+    if (isErr) {
+        return <p>Sorry... couldn't delete comment 😬</p>
+    }
+
+    return <button id="delete" disabled={isLoading} onClick={handleDelete}>{ !isLoading? 'Delete': 'Deleting...' }</button>
+    
 }
