@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export default function SortBy ({setOrder, setSortBy}) {
 
-    const [isAsc, setIsAsc] = useState(false)
+    const [isAsc, setIsAsc] = useState(true)
 
     function handleChange (e) {
         e.preventDefault()
