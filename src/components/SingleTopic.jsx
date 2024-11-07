@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import SearchByTopic from "./SearchByTopic";
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect, useContext } from "react";
@@ -9,7 +9,7 @@ export default function SingleTopic ({articles, setArticles}) {
 
     const { topic_slug } = useParams()
     const [isLoading, setIsLoading] = useState(true)
-    const [isErr, setIsErr] = useState(false)
+    const [err, setErr] = useState(null)
     const { setArticle } = useContext(ArticleContext)
 
     useEffect(() => {
@@ -18,17 +18,19 @@ export default function SingleTopic ({articles, setArticles}) {
 
         apiCall.then(({data})=> {
             setIsLoading(false)
-            setIsErr(false)
             setArticles(data.articles)
-        }).catch((err) => {
+        }).catch(({response}) => {
             setIsLoading(false)
-            setIsErr(true)
-            console.log(err)
+            setErr(response)
         })
     },[topic_slug])
 
-    if(isErr) {
-        return <h3>Oh no! an error... 😬</h3>
+    if (err) {
+        return <div>
+            <h2>Sorry 🤔 could not load this page...</h2>
+            <h3>{err.status} {err.data.msg}</h3>
+            <Link to="/topics"><button>Back to topics</button></Link> 
+        </div>
     }
 
     if(isLoading){

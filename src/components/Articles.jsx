@@ -9,7 +9,7 @@ export default function Articles ({ articles, setArticles }) {
 
     const { setArticle } = useContext(ArticleContext)
     const [isLoading, setIsLoading] = useState(true)
-    const [isErr, setIsErr] = useState(false)
+    const [err, setErr] = useState(null)
     
     const [searchParams, setSearchParams] = useSearchParams();
     const orderQuery = searchParams.get("order");
@@ -32,18 +32,19 @@ export default function Articles ({ articles, setArticles }) {
     useEffect(() => {
             fetchArticles(searchQuery).then(({data}) => {
                 setIsLoading(false)
-                setIsErr(false)
                 setArticles(data.articles)
             }).catch((err) => {
                 setIsLoading(false)
-                setIsErr(true)
-                console.log(err)
+                setErr(err.message)
             }) 
     },[sortByQuery, orderQuery])
 
     
-    if(isErr) {
-        return <h3>Oh no! an error... 😬</h3>
+    if(err) {
+        return <div>
+            <h3>Sorry 🫤 we could not load this article...</h3>
+            <p>{err}</p>
+        </div>
     }
 
     if(isLoading){
