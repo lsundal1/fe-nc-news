@@ -19,7 +19,7 @@ export default function DeleteComment ({comment_id}) {
         })
 
         setTimeout(() => {
-            setDeleted(false)
+            setIsLoading(false)
         }, 3000)
     }
 
