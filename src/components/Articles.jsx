@@ -27,10 +27,8 @@ export default function Articles ({ articles, setArticles }) {
         setSearchParams(newParams);
     };
 
-    const searchQuery = searchParams.toString()
-
     useEffect(() => {
-            fetchArticles(searchQuery).then(({data}) => {
+            fetchArticles(searchParams).then(({data}) => {
                 setIsLoading(false)
                 setArticles(data.articles)
             }).catch((err) => {
@@ -39,28 +37,23 @@ export default function Articles ({ articles, setArticles }) {
             }) 
     },[sortByQuery, orderQuery])
 
-    
-    if(err) {
-        return <div>
-            <h3>Sorry 🫤 we could not load this article...</h3>
-            <p>{err}</p>
-        </div>
-    }
-
-    if(isLoading){
-        return <h3>Loading articles...</h3>
-    }
-
     return (
-        <div id="articles-list-container">
+        <div className="main">
+        { err? 
             <div>
+                <h3>Sorry 🫤 we're having a problem...</h3>
+                <p>{err}</p>
+            </div> : 
+        isLoading? 
+            <h3>Loading articles...</h3> : 
+            <div className="articles" id="articles-list">
                 <SortBy setOrder={setOrder} setSortBy={setSortBy}></SortBy>
-            </div>
-            <ul id="articles-list">
-            {articles.map((item) => {
-                return <ArticleCard key={item.article_id} item={item} setArticle={setArticle}></ArticleCard>
-            })}
-            </ul>
+                <ul className="articles" id="articles-list">
+                    {articles.map((item) => {
+                        return <ArticleCard key={item.article_id} item={item} setArticle={setArticle}></ArticleCard>
+                    })}
+                </ul>
+            </div> }
         </div>
     )
 }

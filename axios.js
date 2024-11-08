@@ -5,8 +5,8 @@ const apiClient = axios.create({
     timout: 5000,
 })
 
-export function fetchArticles (query) {
-    return query? apiClient.get(`/articles?${query}`) : apiClient.get(`/articles`)
+export function fetchArticles (obj) {
+    return apiClient.get(`/articles`, {params: obj})
 }
 
 export function fetchArticleById (article_id) {

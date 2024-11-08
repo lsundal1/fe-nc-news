@@ -42,20 +42,19 @@ export default function SingleArticle() {
         return <h3>Loading article...</h3>
     }
     
-    
     return (
-        <div>
-            <h1>{article.title}</h1>
-            <div id="single-article">
-                <img id="single-article-img" src={article.article_img_url}></img>
-            <div>
-                <p>{article.body}</p>
-                <p>Topic: {article.topic}<br/> 
-                    Author: {article.author}<br/> 
-                    Date Published: {article.created_at? article.created_at.split('T')[0]: null}
-                </p>
-                <Votes article_id={article_id} votes={votes} setVotes={setVotes}></Votes>
-            </div>
+        <div className="main">
+            <h1 className="single-article">{article.title}</h1>
+            <div className="single-article" id="article">
+                <img className="single-article" id="single-article-img" src={article.article_img_url}></img>
+                <div className="single-article" id="article-text">
+                    <p id="article-body">{article.body}</p>
+                    <p>Topic: {article.topic}<br/> 
+                        Author: {article.author}<br/> 
+                        Date Published: {article.created_at? article.created_at.split('T')[0]: null}
+                    </p>
+                    <Votes article_id={article_id} votes={votes} setVotes={setVotes}></Votes>
+                </div>
             </div>
             <Comments article_id={article_id}></Comments>
         </div>
