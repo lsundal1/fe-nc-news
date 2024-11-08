@@ -6,7 +6,7 @@ import DeleteComment from "./DeleteComment.jsx";
 export default function Comments ({article_id}) {
 
     const [comments, setComments] = useState([])
-    const [postedComment, setPostedComment] = useState({})
+    const [user, setUser] = useState("grumpy19")
     const [err, setErr] = useState(null)
     
 
@@ -29,13 +29,14 @@ export default function Comments ({article_id}) {
     }
 
     return (
-        <div id="comments">
+        <div className="comments">
             <h3>Comments:</h3>
-            <PostComment article_id={article_id} setPostedComment={setPostedComment}></PostComment>
-            <ul>
+            <PostComment article_id={article_id}></PostComment>
+            <ul className="comments" id="comments-list">
                 {comments.map((comment) => {
-                    return <li key={comment.comment_id}>
-                        {comment.author}: {comment.body} { comment.author === postedComment.author?<DeleteComment comment_id={comment.comment_id}></DeleteComment> : null}
+                    return <li key={comment.comment_id} className="comments" id="individual-comment">
+                        {comment.author}: {comment.body} { comment.author === user?<DeleteComment comment_id={comment.comment_id}></DeleteComment> : null}
+                        <hr></hr>
                         </li>
                 })}
             </ul>

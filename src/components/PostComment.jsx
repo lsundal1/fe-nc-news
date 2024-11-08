@@ -1,9 +1,10 @@
 import { postComment } from "../../axios"
 import { useState } from "react"
 
-export default function PostComment ({article_id, setPostedComment}) {
+export default function PostComment ({article_id}) {
 
     const [isPosted, setIsPosted] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
     const [isErr, setIsErr] = useState(false)
     const [inputVal, setInputVal] = useState("")
@@ -15,20 +16,19 @@ export default function PostComment ({article_id, setPostedComment}) {
         e.preventDefault()
         setInputVal(e.target.value)
         setRequest({ username: "grumpy19", body: e.target.value})
+        e.target.value.length > 0? setIsDisabled(false) : setIsDisabled(true)
+        console.log(isDisabled)
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setIsLoading(true)
         setIsPosted(true)
-        setInputVal("")
-
-        console.log(request)
-        
+    
         postComment(article_id, request)
-            .then(({data})=> {
+            .then(()=> {
                 setIsLoading(false)
-                setPostedComment(data.newComment)
+                setInputVal("")
             })
             .catch((err) => {
                 setIsLoading(false)
@@ -41,7 +41,6 @@ export default function PostComment ({article_id, setPostedComment}) {
         }, 3000)
     }
 
-
     const value = isLoading? "Posting comment..." : "Submit"
 
     if (isErr) {
@@ -52,12 +51,12 @@ export default function PostComment ({article_id, setPostedComment}) {
     }
 
     return (
-        <div>
+        <div id="post-a-comment">
             <form id="comment-form" onSubmit={handleSubmit}>
 
                 <label htmlFor="comment">Have your say: </label><br/>
                 <input type='text' value={inputVal} onChange={handleInput} id="comment" placeholder="Write a comment..."></input><br/> 
-                <input disabled={isPosted} className="submit" type="submit" value={value}/>
+                <input disabled={isDisabled} className="submit" type="submit" value={value}/>
             </form>
                 { isPosted? "Congrats! You posted a comment!" : null }
         </div>

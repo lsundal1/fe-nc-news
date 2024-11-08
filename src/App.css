@@ -1,57 +1,163 @@
-* {
+/* * {
   border: solid 1px black
-}
-
-body {
-  margin: 0 auto;
-}
+} */
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem;
   text-align: center;
+  font-family: "Roboto", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0 auto;
+  background-image: url("https://cdn.vectorstock.com/i/2000v/03/30/fun-colorful-abstract-background-in-doodle-style-vector-51540330.avif");
+  background-attachment: fixed;
+}
+
+.header {
+  border: 1px solid black;
+  background-color: #d8f6f4;
+  margin-top: 1em;
+  margin-bottom: 1rem;
+}
+
+#home-heading.header {
+  border: none;
+  text-shadow: 3px 3px rgb(179, 176, 176);
+}
+
+.main {
+  border: 1px solid black;
+  margin-bottom: 1em;
+  padding: 2em;
+  background-color: #d8f6f4;
+}
+
+#home {
+  margin: 0 auto;
+  width: 80%;
+}
+
+#home-img {
+  margin: 1em;
+}
+.nav {
+  padding: 1em;
+  margin: 1em;
+}
+
+.nav-link {
+  width: 200px;
+  background-color: #f1f1f1;
+  color: #000;
+  padding: 8px 16px;
+  margin: 5px;
+  text-decoration: none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  box-shadow: 5px 5px grey;
+}
+
+#sort-by-container {
+  margin: 1em;
+  padding: 1em;
 }
 
 #articles-list {
-  margin: 0px
+  margin: 2em;
+  padding-left: 0px;
 }
 
-#articles-list-container {
-  margin: 0px
+.topics-list {
+  margin: 2em;
+  padding-left: 0px;
 }
 
-#article-card {
-  display: block;
-  width: 90%;
+.article-card {
   background-color: aliceblue;
-  margin: 0 auto;
+  border: 1px dashed black;
+  padding: 1em;
+  display: block;
+  max-width: 90%;
+  margin: 1.5em auto;
 }
 
-#article-card-img {
+#article-card-img.article-card {
+  margin-top: 2em;
+  border: 1px solid black;
   max-width: 70%;
+  box-shadow: 10px 10px rgb(132, 125, 125);
 }
 
 #single-article {
   display: inline-flex;
 }
 
+#article-body {
+  text-align: left;
+}
+
 #single-article-img {
   max-width: 500px;
 }
 
-#comments {
+.comments {
   text-align: left;
 }
 
-#likes {
+#comments-list {
+  margin: 0;
+  padding: 0;
+}
+
+#post-a-comment {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.likes {
+  padding: 0.5rem;
+  margin: 0;
   display: inline-flex;
+  border: 1px solid black;
+}
+
+#likes-container.likes {
+  border: none;
+  padding: 0;
 }
 
 #comment-form {
   display: inline-flex;
 }
 
-.likes {
+#individual-comment.comments {
+  padding: 0.5em;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#article.single-article {
   display: inline-flex;
+  background-color: aliceblue;
+  border: 1px solid black;
+  margin-bottom: 1em;
+}
+
+#article-text.single-article {
+  padding: 1em;
+}
+
+#article-img.article
+
+button {
+  border: 1px solid black;
 }

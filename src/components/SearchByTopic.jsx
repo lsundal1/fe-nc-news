@@ -27,10 +27,10 @@ export default function SearchByTopic () {
     }
 
     return (
-        <div>
-            <label htmlFor="topics">Search by topic: </label>
+        <div id="search-by-topic">
+            <label className="dropdown-btn" htmlFor="topics">Search by topic: </label>
             <select onChange={handleChange}>
-                <option key="All">All</option>
+                <option className="dropdown-content" key="All">All</option>
                 {topics.map((topic) => {
                     return <option key={topic} value={topic}>{topic}</option>
                 })} 
