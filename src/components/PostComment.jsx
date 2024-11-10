@@ -1,21 +1,21 @@
 import { postComment } from "../../axios"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { UserContext } from "../contexts/UserContext"
 
 export default function PostComment ({article_id}) {
 
+    const { user } = useContext(UserContext)
     const [isPosted, setIsPosted] = useState(false)
     const [isDisabled, setIsDisabled] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
     const [isErr, setIsErr] = useState(false)
     const [inputVal, setInputVal] = useState("")
-    const [request, setRequest] = useState({
-        username: "grumpy19", body: ""
-    })
+    const [request, setRequest] = useState({})
 
     const handleInput = (e) => {
         e.preventDefault()
         setInputVal(e.target.value)
-        setRequest({ username: "grumpy19", body: e.target.value})
+        setRequest({ username: user.username, body: e.target.value})
         e.target.value.length > 0? setIsDisabled(false) : setIsDisabled(true)
         console.log(isDisabled)
     }
@@ -26,9 +26,10 @@ export default function PostComment ({article_id}) {
         setIsPosted(true)
     
         postComment(article_id, request)
-            .then(()=> {
+            .then(({data})=> {
                 setIsLoading(false)
                 setInputVal("")
+                console.log(data)
             })
             .catch((err) => {
                 setIsLoading(false)
@@ -51,12 +52,10 @@ export default function PostComment ({article_id}) {
     }
 
     return (
-        <div id="post-a-comment">
-            <form id="comment-form" onSubmit={handleSubmit}>
-
-                <label htmlFor="comment">Have your say: </label><br/>
-                <input type='text' value={inputVal} onChange={handleInput} id="comment" placeholder="Write a comment..."></input><br/> 
-                <input disabled={isDisabled} className="submit" type="submit" value={value}/>
+        <div className="post-comment" id="post-a-comment">
+            <form className="post-comment" id="comment-form" onSubmit={handleSubmit}>
+                <input className="post-comment" type='text' value={inputVal} onChange={handleInput} id="comment" placeholder="Write a comment..." required></input><br/> 
+                <input className="post-comment" type="submit" value={value} />
             </form>
                 { isPosted? "Congrats! You posted a comment!" : null }
         </div>

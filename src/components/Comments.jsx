@@ -1,12 +1,13 @@
 import { fetchCommentsById } from "../../axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../contexts/UserContext.jsx";
 import PostComment from './PostComment.jsx'
 import DeleteComment from "./DeleteComment.jsx";
 
 export default function Comments ({article_id}) {
 
     const [comments, setComments] = useState([])
-    const [user, setUser] = useState("grumpy19")
+    const { user } = useContext(UserContext)
     const [err, setErr] = useState(null)
     
 
@@ -35,7 +36,7 @@ export default function Comments ({article_id}) {
             <ul className="comments" id="comments-list">
                 {comments.map((comment) => {
                     return <li key={comment.comment_id} className="comments" id="individual-comment">
-                        {comment.author}: {comment.body} { comment.author === user?<DeleteComment comment_id={comment.comment_id}></DeleteComment> : null}
+                        {comment.author}: {comment.body} { comment.author === user.username?<DeleteComment comment_id={comment.comment_id}></DeleteComment> : null}
                         <hr></hr>
                         </li>
                 })}

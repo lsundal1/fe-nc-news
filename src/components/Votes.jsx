@@ -4,8 +4,10 @@ import { useState } from "react";
 export default function Votes ({article_id, votes, setVotes}) {
 
     const [error, setError] = useState(null);
+    const [isLiked, setIsLiked] = useState(false)
 
     function handleMinus () {
+        setIsLiked(false)
         setVotes((currVotes) => currVotes -1);
         updateVotes(article_id, {inc_votes: -1}).then(() => {
         })
@@ -16,6 +18,7 @@ export default function Votes ({article_id, votes, setVotes}) {
     }
 
     const handlePlus = () => {
+        setIsLiked(true)
         setVotes((currVotes) => currVotes +1);
         updateVotes(article_id, {inc_votes: 1}).then(() => {
         })
@@ -27,10 +30,10 @@ export default function Votes ({article_id, votes, setVotes}) {
 
     return (
         <div className="likes" id="likes-container">
-            <button className="likes" id="like-minus" onClick={handleMinus}>-</button>
 
             <p className="likes" id="likes-text">Likes: {votes}</p>
-            <button className="likes" id="like-minus" onClick={handlePlus}>+</button>
+
+            {isLiked? <button className="likes" id="unlike"onClick={handleMinus}><p>unlike</p></button>:<button className="likes" id="unlike" onClick={handlePlus}><p>like</p></button>}
 
             {error ? <p>{error}</p> : null}
         </div>

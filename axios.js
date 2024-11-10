@@ -22,6 +22,7 @@ export function updateVotes (article_id, obj) {
 }
 
 export function postComment (article_id, obj) {
+    console.log(obj)
     return apiClient.post(`/articles/${article_id}/comments`, obj)
 }
 
@@ -33,6 +34,6 @@ export function fetchTopics () {
     return apiClient.get(`/topics`)
 }
 
-export function fetchArticlesByTopic (topic) {
-    return apiClient.get(`/articles?topic=${topic}`)
+export function fetchUsers () {
+    return apiClient.get('/users')
 }
