@@ -23,7 +23,7 @@ export default function SearchByTopic ({setTopic}) {
 
     const handleChange = (e) => {
         e.preventDefault()
-        e.target.value === "All"? navigate('/articles') : setTopic(e.target.value);
+        setTopic(e.target.value);
     }
 
     return (

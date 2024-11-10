@@ -31,7 +31,7 @@ export default function Articles ({ articles, setArticles }) {
 
     const setTopic = (topicName) => {
         const newParams = new URLSearchParams(searchParams);
-        newParams.set("topic", topicName);
+        topicName === "All" ? newParams.delete("topic") : newParams.set("topic", topicName);
         setSearchParams(newParams);
     };
 
@@ -54,7 +54,7 @@ export default function Articles ({ articles, setArticles }) {
             </div> : 
         isLoading? 
             <h3>Loading articles...</h3> : 
-            <div className="articles" id="articles-list">
+            <div className="articles">
                 <SearchByTopic setTopic={setTopic}></SearchByTopic>
                 <SortBy setOrder={setOrder} setSortBy={setSortBy}></SortBy>
                 <ul className="articles" id="articles-list">
