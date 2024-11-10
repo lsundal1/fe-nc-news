@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
-export default function SearchByTopic () {
+export default function SearchByTopic ({setTopic}) {
 
     const [topics, setTopics] = useState([])
     const navigate = useNavigate()
@@ -23,7 +23,7 @@ export default function SearchByTopic () {
 
     const handleChange = (e) => {
         e.preventDefault()
-        navigate(`/topics/${e.target.value}`)
+        e.target.value === "All"? navigate('/articles') : setTopic(e.target.value);
     }
 
     return (

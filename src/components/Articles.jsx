@@ -4,6 +4,7 @@ import { ArticleContext } from "../contexts/ArticleContext.jsx"
 import { useSearchParams } from "react-router-dom"
 import ArticleCard from "./ArticleCard.jsx"
 import SortBy from "./SortBy.jsx"
+import SearchByTopic from "./SearchByTopic.jsx"
 
 export default function Articles ({ articles, setArticles }) {
 
@@ -14,6 +15,7 @@ export default function Articles ({ articles, setArticles }) {
     const [searchParams, setSearchParams] = useSearchParams();
     const orderQuery = searchParams.get("order");
     const sortByQuery = searchParams.get("sort_by");
+    const topicQuery = searchParams.get("topic")
 
     const setSortBy = (columnName) => {
         const newParams = new URLSearchParams(searchParams);
@@ -27,6 +29,12 @@ export default function Articles ({ articles, setArticles }) {
         setSearchParams(newParams);
     };
 
+    const setTopic = (topicName) => {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set("topic", topicName);
+        setSearchParams(newParams);
+    };
+
     useEffect(() => {
             fetchArticles(searchParams).then(({data}) => {
                 setIsLoading(false)
@@ -35,7 +43,7 @@ export default function Articles ({ articles, setArticles }) {
                 setIsLoading(false)
                 setErr(err.message)
             }) 
-    },[sortByQuery, orderQuery])
+    },[sortByQuery, orderQuery, topicQuery])
 
     return (
         <div className="main">
@@ -47,6 +55,7 @@ export default function Articles ({ articles, setArticles }) {
         isLoading? 
             <h3>Loading articles...</h3> : 
             <div className="articles" id="articles-list">
+                <SearchByTopic setTopic={setTopic}></SearchByTopic>
                 <SortBy setOrder={setOrder} setSortBy={setSortBy}></SortBy>
                 <ul className="articles" id="articles-list">
                     {articles.map((item) => {

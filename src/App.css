@@ -32,26 +32,26 @@ body {
 .main {
   border: 1px solid black;
   margin-bottom: 1em;
+  /* margin: 0 auto; */
   padding: 2em;
   background-color: #d8f6f4;
 }
 
 #home {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
 }
 
 #home-img {
   margin: 1em;
 }
-.nav {
-  padding: 1em;
-  margin: 1em;
+#nav-bar.nav {
+  margin: 2em;
 }
 
 .nav-link {
-  width: 200px;
-  background-color: #f1f1f1;
+  width: 100px;
+  background-color: aliceblue;  
   color: #000;
   padding: 8px 16px;
   margin: 5px;
@@ -80,7 +80,7 @@ body {
 }
 
 .article-card {
-  background-color: aliceblue;
+  background-color: aliceblue;  
   border: 1px dashed black;
   padding: 1em;
   display: block;
@@ -111,6 +111,7 @@ body {
   text-align: left;
 }
 
+
 #comments-list {
   margin: 0;
   padding: 0;
@@ -122,19 +123,39 @@ body {
 }
 
 .likes {
-  padding: 0.5rem;
   margin: 0;
   display: inline-flex;
   border: 1px solid black;
 }
 
-#likes-container.likes {
-  border: none;
+#like.likes{
   padding: 0;
+}
+
+#unlike.likes{
+  padding: 0;
+}
+
+#likes-container.likes {
+  background-color: aliceblue;  
+  color: #000;
+}
+
+#likes-text.likes {
+  width: 70px;
+  border: none;
 }
 
 #comment-form {
   display: inline-flex;
+}
+
+
+.post-comment {
+  height: 2em;
+  background-color: aliceblue; 
+  margin-right: 10px; 
+  color: #000;
 }
 
 #individual-comment.comments {
@@ -156,7 +177,66 @@ ul {
   padding: 1em;
 }
 
-#article-img.article
+.login {
+  margin: 0 auto;
+  display: block;
+}
+
+#avatar-container.login {
+  background-color: aliceblue;
+  float:left;
+  margin: 5px;
+  border: 1px solid black;
+  width: 150px;
+  height: 200px;
+  display: block;
+}
+
+#login-button.nav-link {
+  border: 1px solid black;
+  width: 100px;
+}
+
+#login-avatar.login {
+  width: 100px;
+  height: 100px;  
+}
+
+#login-button.login {
+  display: flex;
+  justify-content: end;
+}
+
+#header-and-avatar {
+  display: grid;
+  grid-template-columns: 1fr 80% 1fr;
+  grid-template-rows: auto;
+}
+
+#home-heading {
+  grid-column-start: 2;
+  grid-column-end: 2;
+}
+
+#user-img {
+  justify-content: end;
+  grid-column-start: 3;
+  grid-column-end: 3;
+}
+
+.user-icon {
+  position: absolute;
+  border: 1px solid black;
+}
+
+#user-img {
+  display: flex;
+  justify-content: end;
+  border: 1px solid black;
+  width: 90px;
+  height: 90px;
+  border-radius: 50px;
+}
 
 button {
   border: 1px solid black;
