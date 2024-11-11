@@ -150,6 +150,12 @@ ul {
 
 }
 
+#info.article-card {
+  padding: 0.5em;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .login {
   margin: 0 auto;
   display: block;
