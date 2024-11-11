@@ -6,7 +6,7 @@ This is a news app that makes use of enpoinds from an api that I created previou
 
 link to backend project: https://github.com/lsundal1/be-nc-news.git 
 
-Users can sort articles by likes, comments and date ascending or descending. They can also search by topic. Users can like and comment on an article, and delete comment that are associated with their username. For the purposes of this app, user has been hard-coded to "grumpy19"
+Users can log in as a user, sort articles by likes, comments and date ascending or descending. Users can also search by topic. Users can like and comment on an article, and delete comment that are associated with their username.
 
 You will need to be running node v22.6.0
 
@@ -19,7 +19,7 @@ To run your project locally, run the following commands in your terminal:
 - npm i react-router-dom
 - npm run dev 
 
-If successful, erminal will display: 
+If successful, terminal will display: 
 
 VITE v5.4.10  ready in 204 ms
 

@@ -55,8 +55,10 @@ export default function Articles ({ articles, setArticles }) {
         isLoading? 
             <h3>Loading articles...</h3> : 
             <div className="articles">
-                <SearchByTopic setTopic={setTopic}></SearchByTopic>
-                <SortBy setOrder={setOrder} setSortBy={setSortBy}></SortBy>
+                <div className="articles" id="sort-by">
+                    <SearchByTopic setTopic={setTopic}></SearchByTopic>
+                    <SortBy setOrder={setOrder} setSortBy={setSortBy}></SortBy>
+                </div>
                 <ul className="articles" id="articles-list">
                     {articles.map((item) => {
                         return <ArticleCard key={item.article_id} item={item} setArticle={setArticle}></ArticleCard>
