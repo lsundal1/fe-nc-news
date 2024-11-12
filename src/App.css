@@ -45,6 +45,7 @@ body {
 }
 
 #home-img {
+  max-width: 80%;
   margin: 1em;
 }
 #nav-bar.nav {
@@ -69,10 +70,6 @@ body {
 #sort-by-container {
   margin: 1em;
   padding: 1em;
-}
-
-#sort-by.articles {
-  display: inline-flex;
 }
 
 #articles-list {
