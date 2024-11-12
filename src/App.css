@@ -138,7 +138,7 @@ ul {
 }
 
 #article.single-article {
-  display: inline-flex;
+  display: block;
   background-color: aliceblue;
   border: 1px solid black;
   margin-bottom: 1em;
@@ -216,6 +216,10 @@ button#unlike.likes {
   width: 90px;
   height: 90px;
   border-radius: 50px;
+}
+
+#single-article-img.single-article {
+  max-width: 100%;
 }
 
 button {
