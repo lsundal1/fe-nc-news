@@ -34,8 +34,8 @@ export default function LogIn () {
     return (
 
         <div className="login" id="login-container">
-            <h2 className="login">Swipe to pick a user</h2>
-        <div className="carousel carousel-center bg-inherit rounded-box max-w-md space-x-4 p-4">
+            <h2 className="login">Pick a user to sign in</h2>
+        <div className="carousel carousel-center bg-inherit rounded-box max-w-screen-xl space-x-4 p-4">
         {users.map((user) => {
             return <div className="carousel-item">
                 <div className="card bg-base-100 w-40 shadow-md m-0">

@@ -22,15 +22,16 @@ export default function SearchByTopic ({setTopic}) {
     },[])
 
     return (
-
-        <details className="dropdown">
-        <summary className="btn m-1">Search by topic:</summary>
-        <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-            <li onClick={() => {setTopic('all')}}><a>All</a></li>
-            {topics.map((topic)=> {
-                return <li key={topic} onClick={() => {setTopic(topic)}}><a>{topic}</a></li>
-            })}
-        </ul>
-        </details>
+        <div id="drop-down">
+            <details className="dropdown-hover">
+            <summary className="btn m-1 bg-grey-100 w-48">Search by topic:</summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-48 p-2 shadow">
+                <li onClick={() => {setTopic('all')}}><a>all</a></li>
+                {topics.map((topic)=> {
+                    return <li key={topic} onClick={() => {setTopic(topic)}}><a>{topic}</a></li>
+                })}
+            </ul>
+            </details>
+        </div>
     )
 }   

@@ -5,7 +5,7 @@ export default function ArticleCard ({item}) {
     const url = `/articles/${item.article_id}`
     
     return (
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 max-w-md shadow-xl m-2">
             <figure>
                 <img
                 src={item.article_img_url}
