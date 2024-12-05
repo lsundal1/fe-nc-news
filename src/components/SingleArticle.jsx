@@ -44,17 +44,17 @@ export default function SingleArticle() {
     
     return (
         <div className="main">
-            <h1 className="single-article">{article.title}</h1>
-            <div className="single-article" id="article">
-                <img className="single-article" id="single-article-img" src={article.article_img_url}></img>
-                <div className="single-article" id="article-text">
-                    <p id="article-body">{article.body}</p>
-                    <p>Topic: {article.topic}<br/> 
-                        Author: {article.author}<br/> 
-                        Date Published: {article.created_at? article.created_at.split('T')[0]: null}
-                    </p>
-                    <Votes article_id={article_id} votes={votes} setVotes={setVotes}></Votes>
-                </div>
+            <div className="card w-full lg:card-side bg-base-100 shadow-md">
+            <figure>
+                <img src={article.article_img_url}/>
+            </figure>
+            <div className="card-body">
+                <h2 style={{textAlign: "center", fontWeight: "bold", fontSize: "1.25rem", lineHeight: "1.75rem", fontWeight: "600"}}>{article.title}</h2>
+                <p>{article.body}</p>
+                <br/>
+                <p style={{fontSize: "1rem"}}>Topic: {article.topic} | Author: {article.author} | Date Published: {article.created_at? article.created_at.split('T')[0]: null}</p>
+                <Votes article_id={article_id} votes={votes} setVotes={setVotes}></Votes>
+            </div>
             </div>
             <Comments article_id={article_id}></Comments>
         </div>

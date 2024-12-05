@@ -33,7 +33,7 @@ export default function Votes ({article_id, votes, setVotes}) {
 
             <p className="likes" id="likes-text">Likes: {votes}</p>
 
-            {isLiked? <button className="likes" id="unlike"onClick={handleMinus}><p>unlike</p></button>:<button className="likes" id="unlike" onClick={handlePlus}><p>like</p></button>}
+            {isLiked? <button className="btn btn-sm btn-outline" onClick={handleMinus}><p>unlike</p></button>:<button className="btn btn-sm btn-outline" onClick={handlePlus}><p>like</p></button>}
 
             {error ? <p>{error}</p> : null}
         </div>

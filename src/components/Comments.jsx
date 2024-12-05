@@ -30,17 +30,28 @@ export default function Comments ({article_id}) {
     }
 
     return (
-        <div className="comments">
-            <h3>Comments:</h3>
+        <div className="comments" style={{marginTop: "2em"}}>
             <PostComment article_id={article_id}></PostComment>
-            <ul className="comments" id="comments-list">
-                {comments.map((comment) => {
-                    return <li key={comment.comment_id} className="comments" id="individual-comment">
-                        {comment.author}: {comment.body} { comment.author === user.username?<DeleteComment comment_id={comment.comment_id}></DeleteComment> : null}
-                        <hr></hr>
-                        </li>
+            <div className="overflow-x-auto">
+            <table className="table">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Comment</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {comments.map((comment)=> {
+                    return <tr key={comment.comment_id}>
+                        <td>{comment.author}</td>
+                    <td>{comment.body}</td>
+                    <td>{ comment.author === user.username?<DeleteComment comment_id={comment.comment_id}></DeleteComment> : null}</td>
+                </tr>
                 })}
-            </ul>
+                </tbody>
+            </table>
+            </div>
         </div>
     )
 }

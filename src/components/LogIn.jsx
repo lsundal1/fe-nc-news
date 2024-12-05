@@ -1,5 +1,6 @@
 import { fetchUsers } from "../../axios";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, Button } from "react";
+import { Link } from 'react-router-dom'
 import { UserContext } from "../contexts/UserContext";
 
 export default function LogIn () {
@@ -31,20 +32,25 @@ export default function LogIn () {
     }
 
     return (
-        <div className="login" id="login-container">
-            <h2 className="login">To continue, pick a user</h2>
-            <ul className="login" id="login-list">
-                {users.map((user) => {
-                    return <li key={user.username} className="login">
-                        <div className="login"  id="avatar-container">
-                        <p>user: {user.username}</p> 
-                        <img className="login" id="login-avatar" src={user.avatar_url}></img>
-                        <button className="nav-link" id="login-button" onClick={() => {setUser(user)}}>Sign In</button>
-                        </div>
-                    </li>   
-                })}
-            </ul>
-        </div>
-    )
 
+        <div className="login" id="login-container">
+            <h2 className="login">Pick a user to sign in</h2>
+        <div className="carousel carousel-center bg-inherit rounded-box max-w-screen-xl space-x-4 p-4">
+        {users.map((user) => {
+            return <div className="carousel-item">
+                <div className="card bg-base-100 w-40 shadow-md m-0">
+                <div className="avatar">
+                <div className="w-24 rounded-xl">
+                    <img id="avatar-img" src={user.avatar_url}/>
+                </div>
+                </div>
+                    <p>user: {user.username}</p> 
+                    <button className="btn" id="login-button" onClick={() => {setUser(user)}}>Sign In</button>
+                </div>
+            </div>
+        })}
+        </div>
+        </div>
+        
+    )
 }

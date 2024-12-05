@@ -5,6 +5,13 @@ export default function UserIcon () {
 
     const { user } = useContext(UserContext)
 
-    return <img id="user-img"src={user.avatar_url}></img>
+    return (
     
+    <div className="avatar">
+        <div className="w-24 rounded-full m-3">
+            <img src={user.avatar_url}/>
+        </div>
+    </div>
+    
+    )
 }

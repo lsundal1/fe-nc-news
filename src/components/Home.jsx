@@ -11,8 +11,8 @@ export default function Home () {
     return (
         <div className="main">
             <div id="home">
-                <h2>Welcome to NC News!</h2>
-                {!user? <LogIn></LogIn>: <h3>Congrats! You are logged in as: {user.username} </h3>}
+                <h2 style={{fontSize: "2em"}}>Welcome to NC News!</h2>
+                {!user? <LogIn></LogIn>: <h3 style={{fontWeight: "bold"}}>You are logged in as: {user.username} </h3>}
                 {user? <div>
                     <h3>About us:</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate facilis magni dolor eaque ipsam? Doloribus quaerat veritatis nulla iste ipsa sequi optio, eum sit ut consectetur ullam voluptates a dignissimos!</p>

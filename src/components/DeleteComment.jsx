@@ -27,6 +27,6 @@ export default function DeleteComment ({comment_id}) {
         return <p>Sorry... couldn't delete comment 😬</p>
     }
 
-    return <button id="delete" disabled={isLoading} onClick={handleDelete}>{ !isLoading? 'Delete': 'Deleting...' }</button>
+    return <button className="btn btn-xs btn-outline" disabled={isLoading} onClick={handleDelete}>{ !isLoading? 'Delete': 'Deleting...' }</button>
     
 }
