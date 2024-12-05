@@ -54,8 +54,8 @@ export default function PostComment ({article_id}) {
     return (
         <div className="post-comment" id="post-a-comment">
             <form className="post-comment" id="comment-form" onSubmit={handleSubmit}>
-                <input className="post-comment" type='text' value={inputVal} onChange={handleInput} id="comment" placeholder="Write a comment..." required></input><br/> 
-                <input className="post-comment" type="submit" value={value} />
+                <input type='text' value={inputVal} onChange={handleInput} id="comment" placeholder="Write a comment..." required></input><br/> 
+                <input className="btn m-1" type="submit" value={value} />
             </form>
                 { isPosted? "Congrats! You posted a comment!" : null }
         </div>

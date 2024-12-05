@@ -2,6 +2,10 @@
   border: solid 1px black
 } */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -9,6 +13,15 @@
   font-family: "Roboto", serif;
   font-weight: 400;
   font-style: normal;
+} 
+
+div.avatar {
+  justify-content: center;
+  display: inline-flex;
+}
+
+#avatar-img {
+  object-fit: contain;
 }
 
 body {
@@ -18,7 +31,7 @@ body {
 }
 
 .header {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background-color: #d8f6f4;
   margin-top: 1em;
   margin-bottom: 1rem;
@@ -32,7 +45,7 @@ body {
 }
 
 .main {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-bottom: 1em;
   /* margin: 0 auto; */
   padding: 2em;
@@ -61,6 +74,7 @@ body {
   text-decoration: none;
   transition-duration: 0.4s;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .nav-link:hover {
@@ -82,14 +96,18 @@ body {
   padding-left: 0px;
 }
 
+#articles-list {
+  display: inline-flex;
+  flex-direction: row;
+}
+
 .article-card {
-  
   background-color: aliceblue;  
   border: 1px dashed black;
   padding: 1em;
-  display: block;
-  max-width: 400px;
-  margin: 1em;
+  display: flex;
+  flex-direction: row;
+  width: 400px;
   margin: 1.5em auto;
   text-align: center;
 }
@@ -160,12 +178,11 @@ ul {
 
 #avatar-container.login {
   background-color: aliceblue;
-  float:left;
   margin: 5px;
   border: 1px solid black;
   width: 150px;
   height: 200px;
-  display: block;
+  display: inline-flex;
 }
 
 button#unlike.likes {
@@ -221,4 +238,8 @@ button#unlike.likes {
 
 button {
   border: 1px solid black;
+}
+
+#drop-down {
+  display: inline-flex;
 }

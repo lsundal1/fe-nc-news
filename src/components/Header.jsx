@@ -10,14 +10,13 @@ export default function Header () {
     return (
         <div className="header">
             <div className="header" id="header-and-avatar">
-                <h1 className="header" id="home-heading">NC News </h1>
+                <h1 className="header" id="home-heading">NC News</h1>
                 {user? <UserIcon></UserIcon>: null}
             </div>
             {user? <nav className="nav" id="nav-bar">
-                <Link className="nav-link" to="/">Home</Link>
-                <Link className="nav-link" to="/articles">Articles</Link>
-                {/* <Link className="nav-link" to="/topics">Topics</Link> */}
-                {user?<Link onClick={() => {setUser(null)}} to="/" className="nav-link">Sign out</Link>:null}
+                <Link className="nav-link rounded" to="/">Home</Link>
+                <Link className="nav-link rounded" to="/articles">Articles</Link>
+                {user?<Link onClick={() => {setUser(null)}} to="/" className="nav-link rounded">Sign out</Link>:null}
             </nav> : null}
         </div>
     )

@@ -31,7 +31,7 @@ export default function Articles ({ articles, setArticles }) {
 
     const setTopic = (topicName) => {
         const newParams = new URLSearchParams(searchParams);
-        topicName === "All" ? newParams.delete("topic") : newParams.set("topic", topicName);
+        topicName === "all" ? newParams.delete("topic") : newParams.set("topic", topicName);
         setSearchParams(newParams);
     };
 
